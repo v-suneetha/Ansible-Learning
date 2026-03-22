@@ -11,12 +11,11 @@
         key_name: "sunee-aws-keypair"
         security_group: default
         region: us-east-1
-        aws_access_key: "{{ access_key }}"  # From vault as defined
-        aws_secret_key: "{{ secret_key }}"  # From vault as defined      
+        aws_access_key: "{{ lookup('env', 'access_key') }}"
+        aws_secret_key: "{{ lookup('env', 'secret_key') }}"      
         network:
           assign_public_ip: true
       loop:
           - manage-node-1
           - manage-node-2
-      
        

@@ -20,5 +20,7 @@
       apt:
         name: php
         state: present
-    
-      
+    - name: Deploy PHP info file
+      copy:
+        content: "<?php phpinfo(); ?>"
+        dest: /var/www/html/info.php   
