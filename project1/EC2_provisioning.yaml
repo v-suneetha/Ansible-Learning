@@ -1,0 +1,22 @@
+---
+- name: Create Ec2 instances
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: install EC2 instances
+      amazon.aws.ec2_instance:
+        name: '{{ item }}'
+        instance_type: t3.micro
+        image_id: "ami-0ec10929233384c7f"
+        key_name: "sunee-aws-keypair"
+        security_group: default
+        region: us-east-1
+        aws_access_key: "{{ access_key }}"  # From vault as defined
+        aws_secret_key: "{{ secret_key }}"  # From vault as defined      
+        network:
+          assign_public_ip: true
+      loop:
+          - manage-node-1
+          - manage-node-2
+      
+       
