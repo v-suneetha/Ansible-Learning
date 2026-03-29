@@ -8,7 +8,7 @@
         state: present
     - name: Copy app files
       copy:
-        src: /var/lib/jenkins/workspace/myapp
+        src: /home/admin1/.jenkins/workspace/myapp-pipeline/project2/myapp
         dest: /home/ubuntu/app/
         mode: '0755'
 
