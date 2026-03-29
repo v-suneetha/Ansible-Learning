@@ -1,0 +1,19 @@
+---
+- name: Create Ec2 instance
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: install EC2 instance
+      amazon.aws.ec2_instance:
+        name: 'manage-node'
+        instance_type: t3.micro
+        image_id: "ami-0ec10929233384c7f"
+        key_name: "sunee-aws-keypair"
+        security_group: default
+        region: us-east-1
+        aws_access_key: "{{ lookup('env', 'access_key') }}"
+        aws_secret_key: "{{ lookup('env', 'secret_key') }}"      
+        network:
+          assign_public_ip: true
+      
+       

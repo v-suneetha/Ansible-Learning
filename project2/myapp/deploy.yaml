@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install nodejs
+      apt:
+        name: nodejs
+        state: present
+    - name: Copy app files
+      copy:
+        src: /var/lib/jenkins/workspace/myapp
+        dest: /home/ubuntu/app/
+        mode: '0755'
+
+    - name: Run the app
+      shell: "node /home/ubuntu/app/app.js > output.log 2>&1 &"
+        
+
+

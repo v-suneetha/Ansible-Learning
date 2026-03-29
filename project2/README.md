@@ -25,3 +25,26 @@ Deploy (Ansible)
 
 🏗️ Architecture
 Developer → Git Push → CI/CD Tool → Ansible → Target Servers
+
+
+Prerequisites
+
+Run Jenkins via WAR file (works in WSL)
+
+This bypasses APT completely.
+
+🔧 Step 1: Install Java
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+
+📥 Step 2: Download Jenkins manually
+wget https://get.jenkins.io/war-stable/latest/jenkins.war
+
+▶️ Step 3: Run Jenkins
+java -jar jenkins.war
+
+🌐 Access
+http://localhost:8080
+
+🔑 Get password
+cat ~/.jenkins/secrets/initialAdminPassword
