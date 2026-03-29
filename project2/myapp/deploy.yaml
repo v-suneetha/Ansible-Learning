@@ -15,7 +15,7 @@
         mode: '0755'
 
     - name: Run the app
-      shell: "node /home/ubuntu/app/app.js > output.log 2>&1 &"
+      shell: "node /home/ubuntu/app/myapp/app.js > output.log 2>&1 &"
         
 
 

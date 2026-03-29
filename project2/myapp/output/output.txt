@@ -1,0 +1,124 @@
+Started by user suneetha
+Obtained project2/myapp/Jenkinsfile from git https://github.com/v-suneetha/Ansible-Learning.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /home/admin1/.jenkins/workspace/myapp-pipeline2
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: git
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/v-suneetha/Ansible-Learning.git
+ > git init /home/admin1/.jenkins/workspace/myapp-pipeline2 # timeout=10
+Fetching upstream changes from https://github.com/v-suneetha/Ansible-Learning.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/v-suneetha/Ansible-Learning.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/v-suneetha/Ansible-Learning.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 6e7c5a07210bdf59f33f92cdd6be747ed6306d1d (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 6e7c5a07210bdf59f33f92cdd6be747ed6306d1d # timeout=10
+Commit message: "Add Jenkinsfile"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout Code)
+[Pipeline] git
+The recommended git tool is: git
+No credentials specified
+ > git rev-parse --resolve-git-dir /home/admin1/.jenkins/workspace/myapp-pipeline2/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/v-suneetha/Ansible-Learning.git # timeout=10
+Fetching upstream changes from https://github.com/v-suneetha/Ansible-Learning.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/v-suneetha/Ansible-Learning.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 6e7c5a07210bdf59f33f92cdd6be747ed6306d1d (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 6e7c5a07210bdf59f33f92cdd6be747ed6306d1d # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b main 6e7c5a07210bdf59f33f92cdd6be747ed6306d1d # timeout=10
+Commit message: "Add Jenkinsfile"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] dir
+Running in /home/admin1/.jenkins/workspace/myapp-pipeline2/project2
+[Pipeline] {
+[Pipeline] echo
+Building
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] dir
+Running in /home/admin1/.jenkins/workspace/myapp-pipeline2/project2/myapp
+[Pipeline] {
+[Pipeline] sh
++ npm install
+
+up to date, audited 1 package in 105ms
+
+found 0 vulnerabilities
+[Pipeline] sh
++ npm test
+
+> myapp@1.0.0 test
+> echo "Running tests"
+
+Running tests
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] dir
+Running in /home/admin1/.jenkins/workspace/myapp-pipeline2/project2/myapp
+[Pipeline] {
+[Pipeline] sh
++ ansible-playbook -i inventory.ini deploy.yaml -u ubuntu
+
+PLAY [all] *********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [3.226.125.96]
+
+TASK [Update apt package] ******************************************************
+changed: [3.226.125.96]
+
+TASK [Install nodejs] **********************************************************
+ok: [3.226.125.96]
+
+TASK [Copy app files] **********************************************************
+ok: [3.226.125.96]
+
+TASK [Run the app] *************************************************************
+changed: [3.226.125.96]
+
+PLAY RECAP *********************************************************************
+3.226.125.96               : ok=5    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+
