@@ -5,7 +5,7 @@
     - name: Update apt package
       shell: "sudo apt update"
     - name: Install nodejs
-      yum:
+      apt:
         name: nodejs
         state: present
     - name: Copy app files
